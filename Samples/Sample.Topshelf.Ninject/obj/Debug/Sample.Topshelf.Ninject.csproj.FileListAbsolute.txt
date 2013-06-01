@@ -1,0 +1,11 @@
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Sample.Topshelf.Ninject.exe.config
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Sample.Topshelf.Ninject.exe
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Sample.Topshelf.Ninject.pdb
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Ninject.dll
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Topshelf.dll
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Topshelf.Ninject.dll
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Ninject.pdb
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\bin\Debug\Ninject.xml
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\obj\Debug\Sample.Topshelf.Ninject.csprojResolveAssemblyReference.cache
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\obj\Debug\Sample.Topshelf.Ninject.exe
+C:\GitHub\markhuber\Topshelf.Integrations\Samples\Sample.Topshelf.Ninject\obj\Debug\Sample.Topshelf.Ninject.pdb
