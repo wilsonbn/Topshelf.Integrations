@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.WebApi.Ninject provides extensions to Topshelf.WebApi to configure a self-hosted WebAPI instance, built from your Ninject IoC Container, along with your service class.</description>
     <releaseNotes>Initial Release</releaseNotes>
+    <licenseUrl>https://github.com/dtinteractive/Topshelf.Integrations/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Dealertrack Interactive 2013</copyright>
     <tags>Topshelf WebApi Ninject</tags>
     <dependencies>

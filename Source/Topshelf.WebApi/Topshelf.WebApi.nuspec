@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.WebApi provides extensions to configure a self-hosted WebAPI instance along with your service class.</description>
     <releaseNotes>Initial Release</releaseNotes>
+    <licenseUrl>https://github.com/dtinteractive/Topshelf.Integrations/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Dealertrack Interactive 2013</copyright>
     <tags>Topshelf WebApi</tags>
     <dependencies>

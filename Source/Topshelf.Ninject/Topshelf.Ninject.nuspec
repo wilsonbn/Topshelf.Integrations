@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.Ninject provides extensions to construct your service class from your Ninject IoC container.</description>
     <releaseNotes>Initial Release</releaseNotes>
+    <licenseUrl>https://github.com/dtinteractive/Topshelf.Integrations/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Dealertrack Interactive 2013</copyright>
     <tags>Topshelf Ninject</tags>
     <dependencies>

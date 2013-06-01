@@ -12,6 +12,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.Quartz.Ninject provides extensions to Topshelf.Quartz allowing you to schedule jobs, built from your Ninject IoC Container, with your service class.</description>
     <releaseNotes>Initial Release</releaseNotes>
+    <licenseUrl>https://github.com/dtinteractive/Topshelf.Integrations/blob/master/LICENSE</licenseUrl>
     <copyright>Copyright Dealertrack Interactive 2013</copyright>
     <tags>Topshelf Quartz Ninject</tags>
     <dependencies>
