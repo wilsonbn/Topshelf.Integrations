@@ -9,9 +9,8 @@
         <PackageOutputDir Condition="$(PackageOutputDir) == ''">$(TargetDir.Trim('\\'))</PackageOutputDir>
 
         <!-- Package sources used to restore packages. By default will used the registered sources under %APPDATA%\NuGet\NuGet.Config -->
-		<ClickMotivePackageSource>http://nuget.clickmotive.com/nuget/</ClickMotivePackageSource>
 		<MicrosoftPackageSource>https://go.microsoft.com/fwlink/?LinkID=230477</MicrosoftPackageSource>
-        <PackageSources>$(MicrosoftPackageSource);$(ClickMotivePackageSource)</PackageSources>
+        <PackageSources>$(MicrosoftPackageSource)</PackageSources>
 
         <!-- Enable the restore command to run before builds -->
         <RestorePackages Condition="$(RestorePackages) == ''">false</RestorePackages>
