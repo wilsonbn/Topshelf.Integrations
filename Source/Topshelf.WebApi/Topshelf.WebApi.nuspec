@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>Topshelf.WebApi</title>
+    <authors>Mark Huber</authors>
+    <owners>Dealertrack Interactive</owners>
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
+    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Topshelf.WebApi provides extensions to configure a self-hosted WebAPI instance along with your service class.</description>
+    <releaseNotes>Initial Release</releaseNotes>
+    <copyright>Copyright Dealertrack Interactive 2013</copyright>
+    <tags>Topshelf WebApi</tags>
+    <dependencies>
+      <dependency id="TopShelf" version="3.1.1" />
+    </dependencies>
+  </metadata>
+</package>
