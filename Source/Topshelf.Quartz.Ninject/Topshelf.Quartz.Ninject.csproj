@@ -38,9 +38,8 @@
     <Reference Include="Ninject">
       <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Quartz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Ninject.Extensions.Quartz.1.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Quartz">
+      <HintPath>..\..\packages\Ninject.Extensions.Quartz.0.1.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
     </Reference>
     <Reference Include="Quartz">
       <HintPath>..\..\packages\Quartz.2.1.2\lib\net40\Quartz.dll</HintPath>
@@ -55,13 +54,11 @@
     <Reference Include="Topshelf">
       <HintPath>..\..\packages\TopShelf.3.1.1\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
-    <Reference Include="Topshelf.Ninject, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Topshelf.Ninject.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
+    <Reference Include="Topshelf.Ninject">
+      <HintPath>..\..\packages\Topshelf.Ninject.0.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Topshelf.Quartz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Topshelf.Quartz.1.0.0\lib\net45\Topshelf.Quartz.dll</HintPath>
+    <Reference Include="Topshelf.Quartz">
+      <HintPath>..\..\packages\Topshelf.Quartz.0.1.0.0\lib\net45\Topshelf.Quartz.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -70,7 +67,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Topshelf.Quartz.Ninject.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

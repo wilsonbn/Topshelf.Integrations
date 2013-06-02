@@ -41,7 +41,7 @@
       <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Extensions.Quartz">
-      <HintPath>..\..\packages\Ninject.Extensions.Quartz.1.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
+      <HintPath>..\..\packages\Ninject.Extensions.Quartz.0.1.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
     </Reference>
     <Reference Include="Quartz">
       <HintPath>..\..\packages\Quartz.2.1.2\lib\net40\Quartz.dll</HintPath>
@@ -56,14 +56,8 @@
     <Reference Include="Topshelf">
       <HintPath>..\..\packages\TopShelf.3.1.1\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
-    <Reference Include="Topshelf.Ninject">
-      <HintPath>..\..\packages\Topshelf.Ninject.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="Topshelf.Quartz">
-      <HintPath>..\..\packages\Topshelf.Quartz.1.0.0\lib\net45\Topshelf.Quartz.dll</HintPath>
-    </Reference>
-    <Reference Include="Topshelf.Quartz.Ninject">
-      <HintPath>..\..\packages\Topshelf.Quartz.Ninject.1.0.0\lib\net45\Topshelf.Quartz.Ninject.dll</HintPath>
+      <HintPath>..\..\packages\Topshelf.Quartz.0.1.0.0\lib\net45\Topshelf.Quartz.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
