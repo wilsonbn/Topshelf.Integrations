@@ -62,13 +62,13 @@
       <HintPath>..\..\packages\TopShelf.3.1.1\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
     <Reference Include="Topshelf.Ninject">
-      <HintPath>..\..\packages\Topshelf.Ninject.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
+      <HintPath>..\..\packages\Topshelf.Ninject.0.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
     </Reference>
     <Reference Include="Topshelf.WebApi">
-      <HintPath>..\..\packages\Topshelf.WebApi.1.0.1\lib\net45\Topshelf.WebApi.dll</HintPath>
+      <HintPath>..\..\packages\Topshelf.WebApi.0.1.0.0\lib\net45\Topshelf.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Topshelf.WebApi.Ninject">
-      <HintPath>..\..\packages\Topshelf.WebApi.Ninject.1.0.0\lib\net45\Topshelf.WebApi.Ninject.dll</HintPath>
+      <HintPath>..\..\packages\Topshelf.WebApi.Ninject.0.1.0.0\lib\net45\Topshelf.WebApi.Ninject.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
