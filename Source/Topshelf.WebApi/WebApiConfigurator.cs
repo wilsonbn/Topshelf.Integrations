@@ -15,6 +15,7 @@ namespace Topshelf.WebApi
 		public string Domain { get; set; }
 		public int Port { get; set; }
 		public Action<HttpRouteCollection> RouteConfigurer { get; set; }
+		public Action<HttpSelfHostConfiguration> ServerConfigurer { get; set; }
 
 		public WebApiConfigurator()
 		{
@@ -34,6 +35,13 @@ namespace Topshelf.WebApi
 		{
 			RouteConfigurer = route;
 			
+			return this;
+		}
+
+		public WebApiConfigurator ConfigureServer(Action<HttpSelfHostConfiguration> config)
+		{
+			ServerConfigurer = config;
+
 			return this;
 		} 
 
@@ -64,7 +72,15 @@ namespace Topshelf.WebApi
 			if(DependencyResolver != null)
 				config.DependencyResolver = DependencyResolver;
 
-			RouteConfigurer(config.Routes);
+			if (ServerConfigurer != null)
+			{
+				ServerConfigurer(config);
+			}
+
+			if (RouteConfigurer != null)
+			{
+				RouteConfigurer(config.Routes);
+			}
 
 			Server = new HttpSelfHostServer(config);
 
