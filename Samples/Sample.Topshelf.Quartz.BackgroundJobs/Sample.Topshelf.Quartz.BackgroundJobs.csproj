@@ -40,8 +40,9 @@
     <Reference Include="Ninject">
       <HintPath>..\..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Extensions.Quartz">
-      <HintPath>..\..\packages\Ninject.Extensions.Quartz.0.1.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
+    <Reference Include="Ninject.Extensions.Quartz, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Ninject.Extensions.Quartz.0.2.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
     </Reference>
     <Reference Include="Quartz">
       <HintPath>..\..\packages\Quartz.2.1.2\lib\net40\Quartz.dll</HintPath>
@@ -56,15 +57,6 @@
     <Reference Include="Topshelf">
       <HintPath>..\..\packages\TopShelf.3.1.1\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
-    <Reference Include="Topshelf.Ninject">
-      <HintPath>..\..\packages\Topshelf.Ninject.0.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Topshelf.Quartz">
-      <HintPath>..\..\packages\Topshelf.Quartz.0.1.0.0\lib\net45\Topshelf.Quartz.dll</HintPath>
-    </Reference>
-    <Reference Include="Topshelf.Quartz.Ninject">
-      <HintPath>..\..\packages\Topshelf.Quartz.Ninject.0.1.0.0\lib\net45\Topshelf.Quartz.Ninject.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -75,6 +67,20 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Topshelf.Ninject\Topshelf.Ninject.csproj">
+      <Project>{f26b9ec4-13cf-4093-bd1f-65f9538fd68a}</Project>
+      <Name>Topshelf.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\Topshelf.Quartz.Ninject\Topshelf.Quartz.Ninject.csproj">
+      <Project>{cae8542b-816f-4324-96c1-626bf01a9e60}</Project>
+      <Name>Topshelf.Quartz.Ninject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Source\Topshelf.Quartz\Topshelf.Quartz.csproj">
+      <Project>{e1751f00-1c7e-45ba-942e-a014f9958e16}</Project>
+      <Name>Topshelf.Quartz</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

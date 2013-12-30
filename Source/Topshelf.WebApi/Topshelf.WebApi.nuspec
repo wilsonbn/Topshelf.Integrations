@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Topshelf.WebApi</id>
-    <version>0.2.0.0</version>
+    <version>0.3.0.0</version>
     <title>Topshelf.WebApi</title>
     <authors>Mark Huber</authors>
     <owners>Dealertrack Interactive</owners>
@@ -10,11 +10,15 @@
     <projectUrl>https://github.com/dtinteractive/Topshelf.Integrations/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.WebApi provides extensions to configure a self-hosted WebAPI instance along with your service class.</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>0.3.0 - Added libs for 3.5, 4.0, 4.5</releaseNotes>
     <copyright>Copyright Dealertrack Interactive 2013</copyright>
     <tags>Topshelf WebApi</tags>
     <dependencies>
       <dependency id="TopShelf" version="3.1.1" />
+      <dependency id="Microsoft.AspNet.WebApi.SelfHost" version="4.0.20918.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="bin\Release\**\Topshelf.WebApi.dll" target="lib" />
+  </files>
 </package>

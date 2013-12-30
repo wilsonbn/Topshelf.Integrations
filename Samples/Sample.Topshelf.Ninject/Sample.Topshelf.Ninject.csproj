@@ -47,9 +47,6 @@
     <Reference Include="Topshelf">
       <HintPath>..\..\packages\TopShelf.3.1.1\lib\net40-full\Topshelf.dll</HintPath>
     </Reference>
-    <Reference Include="Topshelf.Ninject">
-      <HintPath>..\..\packages\Topshelf.Ninject.0.1.0.0\lib\net45\Topshelf.Ninject.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -58,6 +55,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Topshelf.Ninject\Topshelf.Ninject.csproj">
+      <Project>{f26b9ec4-13cf-4093-bd1f-65f9538fd68a}</Project>
+      <Name>Topshelf.Ninject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
