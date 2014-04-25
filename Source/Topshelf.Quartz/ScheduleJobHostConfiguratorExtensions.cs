@@ -20,10 +20,10 @@ namespace Topshelf.Quartz
 		}
 
 
-		public static HostConfigurator ScheduleQuartzJobAsService(this HostConfigurator configurator, Action<QuartzConfigurator> jobConfigurator)
+		public static HostConfigurator ScheduleQuartzJobAsService(this HostConfigurator configurator, Action<QuartzConfigurator> jobConfigurator, bool replaceJob = false)
 		{
 			configurator.Service<NullService>(s => s
-													.ScheduleQuartzJob(jobConfigurator)									   
+													.ScheduleQuartzJob(jobConfigurator, replaceJob)									   
 				                                    .WhenStarted(p => p.Start())
 				                                    .WhenStopped(p => p.Stop())
 													.ConstructUsing(settings => new NullService())
