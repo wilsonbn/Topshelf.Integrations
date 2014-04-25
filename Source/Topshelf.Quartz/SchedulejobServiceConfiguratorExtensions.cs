@@ -50,13 +50,13 @@ namespace Topshelf.Quartz
 			return UsingQuartzJobFactory(configurator, () => new TJobFactory());
 		}
 
-		public static ServiceConfigurator<T> ScheduleQuartzJob<T>(this ServiceConfigurator<T> configurator, Action<QuartzConfigurator> jobConfigurator) where T : class
+		public static ServiceConfigurator<T> ScheduleQuartzJob<T>(this ServiceConfigurator<T> configurator, Action<QuartzConfigurator> jobConfigurator, bool replaceJob = false) where T : class
 		{
-			ConfigureJob<T>(configurator, jobConfigurator);
+			ConfigureJob<T>(configurator, jobConfigurator, replaceJob);
 			return configurator;
 		}
 
-		private static void ConfigureJob<T>(ServiceConfigurator<T> configurator, Action<QuartzConfigurator> jobConfigurator) where T : class
+		private static void ConfigureJob<T>(ServiceConfigurator<T> configurator, Action<QuartzConfigurator> jobConfigurator, bool replaceJob = false) where T : class
 		{
 			var log = HostLogger.Get(typeof(ScheduleJobServiceConfiguratorExtensions));
 
@@ -78,7 +78,7 @@ namespace Topshelf.Quartz
 															if (Scheduler != null && jobDetail != null && jobTriggers.Any())
 															{
 																var triggersForJob = new HashSet<ITrigger>(jobTriggers);
-																Scheduler.ScheduleJob(jobDetail, triggersForJob, false);
+																Scheduler.ScheduleJob(jobDetail, triggersForJob, replaceJob);
 																log.Info(string.Format("[Topshelf.Quartz] Scheduled Job: {0}", jobDetail.Key));
 					
 																foreach(var trigger in triggersForJob)
