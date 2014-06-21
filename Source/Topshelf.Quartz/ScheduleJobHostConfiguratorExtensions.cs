@@ -30,6 +30,6 @@ namespace Topshelf.Quartz
 													);
 
 			return configurator;
-		}
+		}     
 	}
 }
