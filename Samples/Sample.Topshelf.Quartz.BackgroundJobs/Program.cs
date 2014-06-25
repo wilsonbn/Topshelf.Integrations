@@ -15,7 +15,6 @@ namespace Sample.Topshelf.Quartz.BackgroundJobs
         {
             HostFactory.Run(c =>
                 {
-<<<<<<< Updated upstream
                     c.UseNinject(new SampleModule());
 
                     c.Service<SampleService>(s =>
@@ -58,45 +57,6 @@ namespace Sample.Topshelf.Quartz.BackgroundJobs
                                                      .WithScheduleListener(() => new SimpleScheduleListener())
                                 );
                         });
-=======
-                    // Topshelf.Quartz (Optional) - Construct service using Ninject
-                    s.ConstructUsingNinject();
-
-                    s.WhenStarted((service, control) => service.Start());
-                    s.WhenStopped((service, control) => service.Stop());
-
-                    // Topshelf.Quartz.Ninject (Optional) - Construct IJob instance with Ninject
-                    s.UseQuartzNinject();
-
-                    // Schedule a job to run in the background every 5 seconds.
-                    // The full Quartz Builder framework is available here.
-                    s.ScheduleQuartzJob(q =>
-                                        q.WithJob(() =>
-                                                  JobBuilder.Create<SampleJob>()
-                                                            .WithIdentity("sample")
-                                                            .Build())
-                                         .AddTrigger(() =>
-                                                     TriggerBuilder.Create()
-                                                                   .WithIdentity("sample")
-                                                                   .WithSimpleSchedule(
-                                                                       builder =>
-                                                                       builder.WithIntervalInSeconds(5)
-                                                                              .RepeatForever()).Build())
-                                         .WithJobListener(() =>
-                                         {
-                                             return new QuartzJobListenerConfig(
-                                                 new SimpleJobListener(),
-                                                 KeyMatcher<JobKey>.KeyEquals(new JobKey("sample")));
-                                         })
-                                         .WithTriggerListener(() =>
-                                         {
-                                             return new QuartzTriggerListenerConfig(
-                                                 new SimpleTriggerListener(),
-                                                 KeyMatcher<TriggerKey>.KeyEquals(new TriggerKey("sample")));
-                                         })
-                                             .WithScheduleListener(() => new SimpleScheduleListener())
-                        );
->>>>>>> Stashed changes
                 });
         }
     }
@@ -276,7 +236,7 @@ namespace Sample.Topshelf.Quartz.BackgroundJobs
     {
         public override void Load()
         {
-
+            
         }
     }
 }

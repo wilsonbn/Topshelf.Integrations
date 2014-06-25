@@ -12,17 +12,10 @@ namespace Topshelf.Quartz
     public static class ScheduleJobServiceConfiguratorExtensions
     {
         private static readonly Func<IScheduler> DefaultSchedulerFactory = () =>
-<<<<<<< Updated upstream
                                                                                {
                                                                                    var schedulerFactory = new StdSchedulerFactory();
                                                                                    return schedulerFactory.GetScheduler();
                                                                                };
-=======
-        {
-            var schedulerFactory = new StdSchedulerFactory();
-            return schedulerFactory.GetScheduler();
-        };
->>>>>>> Stashed changes
 
         private static Func<IScheduler> _customSchedulerFactory;
         private static IScheduler Scheduler;
@@ -80,7 +73,6 @@ namespace Topshelf.Quartz
                 var triggerListeners = jobConfig.TriggerListeners;
                 var scheduleListeners = jobConfig.ScheduleListeners;
                 configurator.BeforeStartingService(() =>
-<<<<<<< Updated upstream
                                                        {
                                                            log.Debug("[Topshelf.Quartz] Scheduler starting up...");
                                                            if (Scheduler == null)
@@ -147,74 +139,6 @@ namespace Topshelf.Quartz
                                             Scheduler.Shutdown(true);
                                             log.Info("[Topshelf.Quartz] Scheduler shut down...");
                                         });
-=======
-                {
-                    log.Debug("[Topshelf.Quartz] Scheduler starting up...");
-                    if (Scheduler == null)
-                        Scheduler = GetScheduler();
-
-
-                    if (Scheduler != null && jobDetail != null && jobTriggers.Any())
-                    {
-                        var triggersForJob = new HashSet<ITrigger>(jobTriggers);
-                        Scheduler.ScheduleJob(jobDetail, triggersForJob, false);
-                        log.Info(string.Format("[Topshelf.Quartz] Scheduled Job: {0}", jobDetail.Key));
-
-                        foreach (var trigger in triggersForJob)
-                            log.Info(string.Format("[Topshelf.Quartz] Job Schedule: {0} - Next Fire Time (local): {1}", trigger, trigger.GetNextFireTimeUtc().HasValue ? trigger.GetNextFireTimeUtc().Value.ToLocalTime().ToString() : "none"));
-
-
-                        if (jobListeners.Any())
-                        {
-                            foreach (var listener in jobListeners)
-                            {
-                                var config = listener();
-                                Scheduler.ListenerManager.AddJobListener(
-                                    config.Listener, config.Matchers);
-                                log.Info(
-                                    string.Format(
-                                        "[Topshelf.Quartz] Added Job Listener: {0}",
-                                        config.Listener.Name));
-                            }
-                        }
-                        if (triggerListeners.Any())
-                        {
-                            foreach (var listener in triggerListeners)
-                            {
-                                var config = listener();
-                                Scheduler.ListenerManager.AddTriggerListener(config.Listener, config.Matchers);
-                                log.Info(
-                                string.Format(
-                                    "[Topshelf.Quartz] Added Trigger Listener: {0}",
-                                    config.Listener.Name));
-                            }
-                        }
-                        if (scheduleListeners.Any())
-                        {
-                            foreach (var listener in scheduleListeners)
-                            {
-                                var schedListener = listener();
-                                Scheduler.ListenerManager.AddSchedulerListener(schedListener);
-                                string.Format(
-                                    "[Topshelf.Quartz] Added Schedule Listener: {0}",
-                                    schedListener.GetType());
-                            }
-
-                        }
-
-                        Scheduler.Start();
-                        log.Info("[Topshelf.Quartz] Scheduler started...");
-
-                    }
-                });
-
-                configurator.BeforeStoppingService(() =>
-                {
-                    log.Debug("[Topshelf.Quartz] Scheduler shutting down...");
-                    Scheduler.Shutdown(true);
-                    log.Info("[Topshelf.Quartz] Scheduler shut down...");
-                });
->>>>>>> Stashed changes
 
             }
         }
