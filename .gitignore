@@ -74,8 +74,3 @@ _ReSharper.*
 # My specific Visual Studio
 *.vsp
 *.psess
-*.DotSettings
-
-#VS local history
-.localhistory
-.localhistory/*
