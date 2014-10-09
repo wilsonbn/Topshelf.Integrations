@@ -27,6 +27,16 @@ namespace Topshelf.Quartz
 			return this;
 		}
 
+		public QuartzConfigurator AddTriggers(List<ITrigger> jobTriggers)
+		{
+			foreach (var jobTrigger in jobTriggers)
+			{
+				var trigger = jobTrigger;
+				AddTrigger(() => trigger);
+			}
+			return this;
+		}
+
 		public QuartzConfigurator EnableJobWhen(Func<bool> jobEnabled)
 		{
 			JobEnabled = jobEnabled;
