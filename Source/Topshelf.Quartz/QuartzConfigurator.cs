@@ -27,7 +27,7 @@ namespace Topshelf.Quartz
 			return this;
 		}
 
-		public QuartzConfigurator AddTriggers(List<ITrigger> jobTriggers)
+		public QuartzConfigurator WithTriggers(IEnumerable<ITrigger> jobTriggers)
 		{
 			foreach (var jobTrigger in jobTriggers)
 			{
