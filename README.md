@@ -50,7 +50,7 @@ To use Ninject with your Topshelf service, all you need is three lines:
 
 To get the package: `Install-Package Topshelf.Quartz`
 
-To add Ninject Support: `Install-Pacakge Topshelf.Quartz.Ninject`
+To add Ninject Support: `Install-Package Topshelf.Quartz.Ninject`
 
 There are two options for using Quartz.NET with Topshelf, you may schedule any number of Quartz jobs along with your service like this:
 
