@@ -67,7 +67,9 @@ namespace Topshelf.Quartz
 			{
 				var jobDetail = jobConfig.Job();
 				var jobTriggers = jobConfig.Triggers.Select(triggerFactory => triggerFactory()).Where(trigger => trigger != null);
-
+                var jobListeners = jobConfig.JobListeners;
+                var triggerListeners = jobConfig.TriggerListeners;
+                var scheduleListeners = jobConfig.ScheduleListeners;
 				configurator.BeforeStartingService(() =>
 					                                   {
 														   log.Debug("[Topshelf.Quartz] Scheduler starting up...");
@@ -83,6 +85,45 @@ namespace Topshelf.Quartz
 					
 																foreach(var trigger in triggersForJob)
 																	log.Info(string.Format("[Topshelf.Quartz] Job Schedule: {0} - Next Fire Time (local): {1}", trigger, trigger.GetNextFireTimeUtc().HasValue ? trigger.GetNextFireTimeUtc().Value.ToLocalTime().ToString() : "none"));
+
+                                                                if (jobListeners.Any())
+                                                                {
+                                                                    foreach (var listener in jobListeners)
+                                                                    {
+                                                                        var config = listener();
+                                                                        Scheduler.ListenerManager.AddJobListener(
+                                                                            config.Listener, config.Matchers);
+                                                                        log.Info(
+                                                                            string.Format(
+                                                                                "[Topshelf.Quartz] Added Job Listener: {0}",
+                                                                                config.Listener.Name));
+                                                                    }
+                                                                }
+
+                                                                if (triggerListeners.Any())
+                                                                {
+                                                                    foreach (var listener in triggerListeners)
+                                                                    {
+                                                                        var config = listener();
+                                                                        Scheduler.ListenerManager.AddTriggerListener(config.Listener, config.Matchers);
+                                                                        log.Info(
+                                                                        string.Format(
+                                                                            "[Topshelf.Quartz] Added Trigger Listener: {0}",
+                                                                            config.Listener.Name));
+                                                                    }
+                                                                }
+                                                                if (scheduleListeners.Any())
+                                                                {
+                                                                    foreach (var listener in scheduleListeners)
+                                                                    {
+                                                                        var schedListener = listener();
+                                                                        Scheduler.ListenerManager.AddSchedulerListener(schedListener);
+                                                                        string.Format(
+                                                                            "[Topshelf.Quartz] Added Schedule Listener: {0}",
+                                                                            schedListener.GetType());
+                                                                    }
+
+                                                                }
 
 																Scheduler.Start();
 																log.Info("[Topshelf.Quartz] Scheduler started...");
