@@ -4,28 +4,6 @@ using Quartz;
 
 namespace Topshelf.Quartz
 {
-    public class QuartzJobListenerConfig
-    {
-        public QuartzJobListenerConfig(IJobListener listener, params IMatcher<JobKey>[] matchers)
-        {
-            Listener = listener;
-            Matchers = matchers;
-        }
-        public IJobListener Listener { get; set; }
-        public IList<IMatcher<JobKey>> Matchers { get; set; }
-    }
-
-    public class QuartzTriggerListenerConfig
-    {
-        public QuartzTriggerListenerConfig(ITriggerListener listener, params IMatcher<TriggerKey>[] matchers)
-        {
-            Listener = listener;
-            Matchers = matchers;
-        }
-        public ITriggerListener Listener { get; set; }
-        public IList<IMatcher<TriggerKey>> Matchers { get; set; }
-    }
-
     public class QuartzConfigurator
     {
         public Func<IJobDetail> Job { get; set; }
@@ -52,6 +30,16 @@ namespace Topshelf.Quartz
         public QuartzConfigurator AddTrigger(Func<ITrigger> jobTrigger)
         {
             Triggers.Add(jobTrigger);
+            return this;
+        }
+
+        public QuartzConfigurator WithTriggers(IEnumerable<ITrigger> jobTriggers)
+        {
+            foreach (var jobTrigger in jobTriggers)
+            {
+                var trigger = jobTrigger;
+                AddTrigger(() => trigger);
+            }
             return this;
         }
 
