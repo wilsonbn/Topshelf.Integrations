@@ -93,7 +93,8 @@ namespace Topshelf.Quartz
 				configurator.BeforeStoppingService(() =>
 						                {
 											log.Debug("[Topshelf.Quartz] Scheduler shutting down...");
-											Scheduler.Shutdown(true);
+											if(Scheduler != null)
+												Scheduler.Shutdown(true);
 											log.Info("[Topshelf.Quartz] Scheduler shut down...");
 						                });
 
