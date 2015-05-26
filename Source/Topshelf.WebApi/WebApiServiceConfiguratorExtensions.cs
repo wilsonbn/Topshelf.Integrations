@@ -12,10 +12,8 @@ namespace Topshelf.WebApi
 
 			webConfigurator(config);
 
-			config.Build();
-
-			configurator.BeforeStartingService(t => config.Server.OpenAsync().Wait());
-			configurator.BeforeStoppingService(t => config.Server.CloseAsync().Wait());
+			configurator.BeforeStartingService(t => config.Initialize());
+			configurator.BeforeStoppingService(t => config.Shutdown());
 
 			return configurator;
 		}

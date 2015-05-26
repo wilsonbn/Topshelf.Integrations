@@ -8,14 +8,15 @@ namespace Topshelf.WebApi
 {
 	public class WebApiConfigurator
 	{
-		public HttpSelfHostServer Server { get; private set; }
+		public HttpServer Server { get; private set; }
 
 		public IDependencyResolver DependencyResolver { get; set; }
 		public string Scheme { get; set; }
 		public string Domain { get; set; }
 		public int Port { get; set; }
+        public Func<Uri, HttpServer> ServerFactory { get; set; } 
 		public Action<HttpRouteCollection> RouteConfigurer { get; set; }
-		public Action<HttpSelfHostConfiguration> ServerConfigurer { get; set; }
+		public Action<HttpConfiguration> ServerConfigurer { get; set; }
 
 		public WebApiConfigurator()
 		{
@@ -38,7 +39,7 @@ namespace Topshelf.WebApi
 			return this;
 		}
 
-		public WebApiConfigurator ConfigureServer(Action<HttpSelfHostConfiguration> config)
+		public WebApiConfigurator ConfigureServer(Action<HttpConfiguration> config)
 		{
 			ServerConfigurer = config;
 
@@ -59,7 +60,7 @@ namespace Topshelf.WebApi
 			return this;
 		} 
 
-		public HttpSelfHostServer Build()
+		public HttpServer Build()
 		{
 			var log = HostLogger.Get(typeof(WebApiConfigurator));
 
@@ -67,9 +68,10 @@ namespace Topshelf.WebApi
 
 			log.Debug(string.Format("[Topshelf.WebApi] Configuring WebAPI Selfhost for URI: {0}", baseAddress));
 
-			var config = new HttpSelfHostConfiguration(baseAddress);
+		    Server = ServerFactory != null ? ServerFactory(baseAddress) : BuildServer(baseAddress);
+		    var config = Server.Configuration;
 
-			if(DependencyResolver != null)
+		    if(DependencyResolver != null)
 				config.DependencyResolver = DependencyResolver;
 
 			if (ServerConfigurer != null)
@@ -82,11 +84,26 @@ namespace Topshelf.WebApi
 				RouteConfigurer(config.Routes);
 			}
 
-			Server = new HttpSelfHostServer(config);
-
 			log.Info(string.Format("[Topshelf.WebApi] WebAPI Selfhost server configurated and listening on: {0}", baseAddress));
 
 			return Server;
 		}
+
+	    private HttpServer BuildServer(Uri baseAddress)
+	    {
+	        return new HttpSelfHostServer(new HttpSelfHostConfiguration(baseAddress));
+	    }
+
+	    public virtual void Initialize()
+	    {
+            if (Server is HttpSelfHostServer)
+                (Server as HttpSelfHostServer).OpenAsync().Wait();
+	    }
+
+	    public virtual void Shutdown()
+	    {
+            if (Server is HttpSelfHostServer)
+                (Server as HttpSelfHostServer).CloseAsync().Wait();
+	    }
 	}
 }
