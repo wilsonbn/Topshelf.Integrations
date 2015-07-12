@@ -135,7 +135,8 @@ namespace Topshelf.Quartz
 						                {
 											log.Debug("[Topshelf.Quartz] Scheduler shutting down...");
 											if(Scheduler != null)
-												Scheduler.Standby();
+                                                if(!Scheduler.IsShutdown)
+												    Scheduler.Shutdown();
 											log.Info("[Topshelf.Quartz] Scheduler shut down...");
 						                });
 
