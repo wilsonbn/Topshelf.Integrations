@@ -39,6 +39,7 @@ namespace Topshelf.Quartz.Ninject.Tests
        }
 
        [Test]
+       [Ignore]
        public void TestCanScheduleJobAsService()
        {
            Host host = HostFactory.New(configurator =>
