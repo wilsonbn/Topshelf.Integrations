@@ -15,7 +15,7 @@ namespace Topshelf.Quartz.Ninject.Tests
            SampleJob.HasRun = false;
        }
 
-       [Test, RunInApplicationDomain]
+       [Test]
        public void TestCanScheduleJobAlongsideService()
        {
            Host host = HostFactory.New(configurator =>
@@ -38,7 +38,8 @@ namespace Topshelf.Quartz.Ninject.Tests
            Assert.IsTrue(SampleJob.HasRun);
        }
 
-       [Test, RunInApplicationDomain]
+       [Test]
+       [Ignore]
        public void TestCanScheduleJobAsService()
        {
            Host host = HostFactory.New(configurator =>
