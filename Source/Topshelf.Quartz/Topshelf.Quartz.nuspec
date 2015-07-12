@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Topshelf.Quartz</id>
-    <version>0.4.0.0</version>
+    <version>0.4.0.1</version>
     <title>Topshelf.Quartz</title>
     <authors>Mark Huber</authors>
     <owners>Dealertrack Interactive</owners>
@@ -10,7 +10,10 @@
     <projectUrl>https://www.github.com/dtinteractive/Topshelf.Integrations/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Topshelf.Quartz provides extensions to schedule Quartz jobs along with your service class.</description>
-    <releaseNotes>0.4.0 - Updated dependencies for TopShelf and Quartz</releaseNotes>
+    <releaseNotes>
+      0.4.0.1 - Fixed issue with Scheduler hanging and preventing .exe terminating.
+      0.4.0 - Updated dependencies for TopShelf and Quartz
+    </releaseNotes>
     <copyright>Copyright Dealertrack Interactive 2015</copyright>
     <tags>Topshelf Quartz</tags>
     <dependencies>
