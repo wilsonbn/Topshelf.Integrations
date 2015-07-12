@@ -48,6 +48,10 @@
       <HintPath>..\..\packages\Ninject.Extensions.Quartz.0.3.0.0\lib\net45\Ninject.Extensions.Quartz.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NUnit.ApplicationDomain, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.ApplicationDomain.5.0.1\lib\net40\NUnit.ApplicationDomain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
