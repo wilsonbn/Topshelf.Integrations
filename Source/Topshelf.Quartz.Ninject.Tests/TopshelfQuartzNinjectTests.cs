@@ -13,7 +13,7 @@ namespace Topshelf.Quartz.Ninject.Tests
        [SetUp]
        public void Setup()
        {
-            SampleNinjectJob.HasRun = false;
+            SampleJob.HasRun = false;
        }
 
        [Test]
@@ -36,7 +36,7 @@ namespace Topshelf.Quartz.Ninject.Tests
            
            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(2.0));
 
-           Assert.IsTrue(SampleNinjectJob.HasRun);
+           Assert.IsTrue(SampleJob.HasRun);
        }
 
        [Test]
