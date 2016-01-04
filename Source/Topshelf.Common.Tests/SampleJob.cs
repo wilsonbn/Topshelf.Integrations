@@ -20,20 +20,11 @@ namespace Topshelf.Common.Tests
         }
     }
 
-    public class SampleNinjectJob : IJob
+    public class SampleNinjectJob : SampleJob
     {
-        public static bool HasRun = false;
-
-        protected SampleDependency Dependency;
-
         public SampleNinjectJob(SampleDependency dependency)
         {
             Dependency = dependency;
-        }
-        public void Execute(IJobExecutionContext context)
-        {
-            Dependency.DoWork();
-            HasRun = true;
         }
     }
 

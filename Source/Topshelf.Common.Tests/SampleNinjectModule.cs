@@ -17,8 +17,8 @@ namespace Topshelf.Common.Tests
         public override void Load()
         {
             Bind<ISampleDependency>().To<SampleDependency>().InSingletonScope();
-            Bind<SampleNinjectJob>().ToSelf().InSingletonScope().WithConstructorArgument("dependency", Kernel.Get<ISampleDependency>());
-            Bind<SampleJob>().ToSelf().InSingletonScope();
+            Bind<IJob>().To<SampleJob>().InSingletonScope();
+            Bind<IJob>().To<SampleNinjectJob>().InSingletonScope().WithConstructorArgument("dependency", Kernel.Get<ISampleDependency>());
             Bind<ISchedulerFactory>().To<StdSchedulerFactory>().InSingletonScope();
             Bind<IJobFactory>().To<NinjectJobFactory>().InSingletonScope();
             Bind<IScheduler>().ToMethod((c) =>
