@@ -20,5 +20,11 @@ namespace Topshelf.WebApi.Ninject.Tests.Controllers
             return 0;
         }
 
+        [LocalConstraint]
+        [HttpGet]
+        public int Get(string blah)
+        {
+            return 42;
+        }
     }
 }

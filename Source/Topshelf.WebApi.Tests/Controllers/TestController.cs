@@ -15,5 +15,11 @@ namespace Topshelf.WebApi.Tests.Controllers
             return 42;
         }
 
+        [LocalConstraint]
+        [HttpGet]
+        public int Get(string blah)
+        {
+            return 42;
+        }
     }
 }

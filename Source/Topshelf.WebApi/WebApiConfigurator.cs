@@ -16,6 +16,7 @@ namespace Topshelf.WebApi
         public string Domain { get; set; }
         public int Port { get; set; }
         public Func<Uri, HttpServer> ServerFactory { get; set; }
+        public Action<HttpFilterCollection> FilterConfigurer { get; set; }
         public Action<HttpRouteCollection> RouteConfigurer { get; set; }
         public Action<HttpConfiguration> ServerConfigurer { get; set; }
 
@@ -30,6 +31,12 @@ namespace Topshelf.WebApi
         {
             DependencyResolver = dependencyResolver;
 
+            return this;
+        }
+
+        public WebApiConfigurator ConfigureFilters(Action<HttpFilterCollection> filters)
+        {
+            FilterConfigurer = filters;
             return this;
         }
 
@@ -83,6 +90,11 @@ namespace Topshelf.WebApi
             if (RouteConfigurer != null)
             {
                 RouteConfigurer(config.Routes);
+            }
+
+            if (FilterConfigurer != null)
+            {
+                FilterConfigurer(config.Filters);
             }
 
             log.Info(string.Format("[Topshelf.WebApi] WebAPI Selfhost server configurated and listening on: {0}", baseAddress));
