@@ -14,5 +14,6 @@ namespace Topshelf.WebApi.Tests.Controllers
         {
             return 42;
         }
+
     }
 }

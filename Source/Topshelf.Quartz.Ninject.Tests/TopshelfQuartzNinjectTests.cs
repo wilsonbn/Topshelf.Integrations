@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Quartz;
+using Quartz.Spi;
 using Topshelf.Common.Tests;
 using Topshelf.Ninject;
 
@@ -12,7 +13,7 @@ namespace Topshelf.Quartz.Ninject.Tests
        [SetUp]
        public void Setup()
        {
-           SampleJob.HasRun = false;
+            SampleNinjectJob.HasRun = false;
        }
 
        [Test]
@@ -35,11 +36,11 @@ namespace Topshelf.Quartz.Ninject.Tests
            
            System.Threading.Thread.Sleep(TimeSpan.FromSeconds(2.0));
 
-           Assert.IsTrue(SampleJob.HasRun);
+           Assert.IsTrue(SampleNinjectJob.HasRun);
        }
 
        [Test]
-       [Ignore]
+       [Ignore("")]
        public void TestCanScheduleJobAsService()
        {
            Host host = HostFactory.New(configurator =>

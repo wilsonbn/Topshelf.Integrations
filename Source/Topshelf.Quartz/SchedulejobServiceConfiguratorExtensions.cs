@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Ninject;
 using Quartz;
 using Quartz.Collection;
 using Quartz.Impl;

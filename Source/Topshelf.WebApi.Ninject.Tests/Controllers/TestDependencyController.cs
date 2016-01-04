@@ -19,5 +19,6 @@ namespace Topshelf.WebApi.Ninject.Tests.Controllers
                 return 42;
             return 0;
         }
+
     }
 }

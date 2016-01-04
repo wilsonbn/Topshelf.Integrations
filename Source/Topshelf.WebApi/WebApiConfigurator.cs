@@ -1,109 +1,110 @@
 using System;
 using System.Web.Http;
 using System.Web.Http.Dependencies;
+using System.Web.Http.Filters;
 using System.Web.Http.SelfHost;
 using Topshelf.Logging;
 
 namespace Topshelf.WebApi
 {
-	public class WebApiConfigurator
-	{
-		public HttpServer Server { get; private set; }
+    public class WebApiConfigurator
+    {
+        public HttpServer Server { get; private set; }
 
-		public IDependencyResolver DependencyResolver { get; set; }
-		public string Scheme { get; set; }
-		public string Domain { get; set; }
-		public int Port { get; set; }
-        public Func<Uri, HttpServer> ServerFactory { get; set; } 
-		public Action<HttpRouteCollection> RouteConfigurer { get; set; }
-		public Action<HttpConfiguration> ServerConfigurer { get; set; }
+        public IDependencyResolver DependencyResolver { get; set; }
+        public string Scheme { get; set; }
+        public string Domain { get; set; }
+        public int Port { get; set; }
+        public Func<Uri, HttpServer> ServerFactory { get; set; }
+        public Action<HttpRouteCollection> RouteConfigurer { get; set; }
+        public Action<HttpConfiguration> ServerConfigurer { get; set; }
 
-		public WebApiConfigurator()
-		{
-			Scheme = "http";
-			Domain = "localhost";
-			Port = 8080;
-		}
+        public WebApiConfigurator()
+        {
+            Scheme = "http";
+            Domain = "localhost";
+            Port = 8080;
+        }
 
-		public WebApiConfigurator UseDependencyResolver(IDependencyResolver dependencyResolver)
-		{
-			DependencyResolver = dependencyResolver;
-			
-			return this;
-		}
+        public WebApiConfigurator UseDependencyResolver(IDependencyResolver dependencyResolver)
+        {
+            DependencyResolver = dependencyResolver;
 
-		public WebApiConfigurator ConfigureRoutes(Action<HttpRouteCollection> route)
-		{
-			RouteConfigurer = route;
-			
-			return this;
-		}
+            return this;
+        }
 
-		public WebApiConfigurator ConfigureServer(Action<HttpConfiguration> config)
-		{
-			ServerConfigurer = config;
+        public WebApiConfigurator ConfigureRoutes(Action<HttpRouteCollection> route)
+        {
+            RouteConfigurer = route;
 
-			return this;
-		} 
+            return this;
+        }
 
-		public WebApiConfigurator OnLocalhost(int port = 8080)
-		{
-			return OnHost("http", "localhost", port);
-		}
+        public WebApiConfigurator ConfigureServer(Action<HttpConfiguration> config)
+        {
+            ServerConfigurer = config;
 
-		public WebApiConfigurator OnHost(string scheme = null, string domain = null, int port = 8080)
-		{
-			Scheme = !string.IsNullOrEmpty(scheme) ? scheme : Scheme;
-			Domain = !string.IsNullOrEmpty(domain) ? domain : Domain;
-			Port = port;
+            return this;
+        }
 
-			return this;
-		} 
+        public WebApiConfigurator OnLocalhost(int port = 8080)
+        {
+            return OnHost("http", "localhost", port);
+        }
 
-		public HttpServer Build()
-		{
-			var log = HostLogger.Get(typeof(WebApiConfigurator));
+        public WebApiConfigurator OnHost(string scheme = null, string domain = null, int port = 8080)
+        {
+            Scheme = !string.IsNullOrEmpty(scheme) ? scheme : Scheme;
+            Domain = !string.IsNullOrEmpty(domain) ? domain : Domain;
+            Port = port;
 
-			var baseAddress = new UriBuilder(Scheme, Domain, Port).Uri;
+            return this;
+        }
 
-			log.Debug(string.Format("[Topshelf.WebApi] Configuring WebAPI Selfhost for URI: {0}", baseAddress));
+        public HttpServer Build()
+        {
+            var log = HostLogger.Get(typeof(WebApiConfigurator));
 
-		    Server = ServerFactory != null ? ServerFactory(baseAddress) : BuildServer(baseAddress);
-		    var config = Server.Configuration;
+            var baseAddress = new UriBuilder(Scheme, Domain, Port).Uri;
 
-		    if(DependencyResolver != null)
-				config.DependencyResolver = DependencyResolver;
+            log.Debug(string.Format("[Topshelf.WebApi] Configuring WebAPI Selfhost for URI: {0}", baseAddress));
 
-			if (ServerConfigurer != null)
-			{
-				ServerConfigurer(config);
-			}
+            Server = ServerFactory != null ? ServerFactory(baseAddress) : BuildServer(baseAddress);
+            var config = Server.Configuration;
 
-			if (RouteConfigurer != null)
-			{
-				RouteConfigurer(config.Routes);
-			}
+            if (DependencyResolver != null)
+                config.DependencyResolver = DependencyResolver;
 
-			log.Info(string.Format("[Topshelf.WebApi] WebAPI Selfhost server configurated and listening on: {0}", baseAddress));
+            if (ServerConfigurer != null)
+            {
+                ServerConfigurer(config);
+            }
 
-			return Server;
-		}
+            if (RouteConfigurer != null)
+            {
+                RouteConfigurer(config.Routes);
+            }
 
-	    private HttpServer BuildServer(Uri baseAddress)
-	    {
-	        return new HttpSelfHostServer(new HttpSelfHostConfiguration(baseAddress));
-	    }
+            log.Info(string.Format("[Topshelf.WebApi] WebAPI Selfhost server configurated and listening on: {0}", baseAddress));
 
-	    public virtual void Initialize()
-	    {
+            return Server;
+        }
+
+        private HttpServer BuildServer(Uri baseAddress)
+        {
+            return new HttpSelfHostServer(new HttpSelfHostConfiguration(baseAddress));
+        }
+
+        public virtual void Initialize()
+        {
             if (Server is HttpSelfHostServer)
                 (Server as HttpSelfHostServer).OpenAsync().Wait();
-	    }
+        }
 
-	    public virtual void Shutdown()
-	    {
+        public virtual void Shutdown()
+        {
             if (Server is HttpSelfHostServer)
                 (Server as HttpSelfHostServer).CloseAsync().Wait();
-	    }
-	}
+        }
+    }
 }
